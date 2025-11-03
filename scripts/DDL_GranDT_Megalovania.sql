@@ -80,7 +80,7 @@ CREATE TABLE Plantilla (
 	nombreP VARCHAR(45) NOT NULL,
 	cantMaxMonto DECIMAL(11,2),
 	cantMaxFutbolista TINYINT,
-	idUsuario INT UNSIGNED,
+	idUsuario SMALLINT,
 	idPuntuacion INT UNSIGNED,
 	CONSTRAINT pk_Plantilla PRIMARY KEY (idPlantilla ASC),
 	CONSTRAINT fk_Plantilla_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario (idUsuario) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -91,7 +91,7 @@ CREATE TABLE Plantilla (
 -- Tabla: Futbolista_Plantilla
 -- ==========================================================
 CREATE TABLE Futbolista_Plantilla (
-	idFutbolistaPlantilla TIYINT UNSIGNED AUTO_INCREMENT,
+	idFutbolistaPlantilla TINYINT UNSIGNED AUTO_INCREMENT,
 	futbolistaTitular TINYINT DEFAULT 0,
 	futbolistaSuplente TINYINT DEFAULT 0,
 	validacionP TINYINT DEFAULT 0,
