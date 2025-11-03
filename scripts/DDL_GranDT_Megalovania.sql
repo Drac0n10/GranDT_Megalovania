@@ -24,8 +24,8 @@ CREATE TABLE Tipo_Futbolista (
 CREATE TABLE Equipo (
 	idEquipo TINYINT UNSIGNED AUTO_INCREMENT,
 	nombre VARCHAR(45) NOT NULL,
-	CONSTRAINT PK_Equipo PRIMARY KEY (idEquipo ASC),
-	CONSTRAINT UQ_Equipo_Nombre UNIQUE (nombre ASC)
+	CONSTRAINT pk_Equipo PRIMARY KEY (idEquipo ASC),
+	CONSTRAINT uq_Equipo_Nombre UNIQUE (nombre ASC)
 );
 
 -- ==========================================================
