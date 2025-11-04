@@ -42,7 +42,7 @@ CREATE TABLE Futbolista (
 	idTipoFutbolista TINYINT UNSIGNED,
 	CONSTRAINT pk_Futbolista PRIMARY KEY (idFutbolista ASC),
 	CONSTRAINT fk_Futbolista_Equipo FOREIGN KEY (idEquipo) REFERENCES Equipo (idEquipo) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	CONSTRAINT fk_Futbolista_Tipo FOREIGN KEY (idTipoFutbolista) REFERENCES tipo_Futbolista (idTipoFutbolista) ON DELETE NO ACTION ON UPDATE NO ACTION
+	CONSTRAINT fk_Futbolista_Tipo FOREIGN KEY (idTipoFutbolista) REFERENCES Tipo_Futbolista (idTipoFutbolista) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 -- ==========================================================
