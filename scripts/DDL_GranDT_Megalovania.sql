@@ -54,7 +54,7 @@ CREATE TABLE Usuario (
 	apellido VARCHAR(45) NOT NULL,
 	email VARCHAR(100) NOT NULL,
 	fechaNac DATE,
-	contrasena CHAR(64) NOT NULL,
+	contraseña CHAR(64) NOT NULL,
 	es_admin TINYINT DEFAULT 0,
 	CONSTRAINT pk_Usuario PRIMARY KEY (idUsuario ASC),
 	CONSTRAINT uq_Usuario_Email UNIQUE (email ASC)
