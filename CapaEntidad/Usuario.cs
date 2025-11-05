@@ -11,9 +11,10 @@ namespace CapaEntidad
         public short IdUsuario { get; set; }
         public required string Nombre { get; set; }
         public required string Apellido { get; set; }
-        public required string email { get; set; }
+        public required string Email { get; set; }
         public DateTime FechaNac { get; set; }
-        public bool es_admin { get; set; }
+        public required string Contraseña { get; set; }
+        public bool Es_admin { get; set; } 
 
     }
 }

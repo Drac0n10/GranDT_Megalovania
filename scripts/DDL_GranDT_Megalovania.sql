@@ -14,8 +14,8 @@ SELECT 'Creando Tablas' AS 'Estado';
 CREATE TABLE Tipo_Futbolista (
 	idTipoFutbolista TINYINT UNSIGNED AUTO_INCREMENT,
 	tipoFutbolista VARCHAR(45) NOT NULL,
-	CONSTRAINT PK_TipoFutbolista PRIMARY KEY (idTipoFutbolista ASC),
-	CONSTRAINT UQ_TipoFutbolista_Tipo UNIQUE (tipoFutbolista ASC)
+	CONSTRAINT pk_TipoFutbolista PRIMARY KEY (idTipoFutbolista ASC),
+	CONSTRAINT uq_TipoFutbolista_Tipo UNIQUE (tipoFutbolista ASC)
 );
 
 -- ==========================================================
@@ -24,8 +24,8 @@ CREATE TABLE Tipo_Futbolista (
 CREATE TABLE Equipo (
 	idEquipo TINYINT UNSIGNED AUTO_INCREMENT,
 	nombre VARCHAR(45) NOT NULL,
-	CONSTRAINT PK_Equipo PRIMARY KEY (idEquipo ASC),
-	CONSTRAINT UQ_Equipo_Nombre UNIQUE (nombre ASC)
+	CONSTRAINT pk_Equipo PRIMARY KEY (idEquipo ASC),
+	CONSTRAINT uq_Equipo_Nombre UNIQUE (nombre ASC)
 );
 
 -- ==========================================================
@@ -40,24 +40,24 @@ CREATE TABLE Futbolista (
 	cotizacion DECIMAL(11,2),
 	idEquipo TINYINT UNSIGNED,
 	idTipoFutbolista TINYINT UNSIGNED,
-	CONSTRAINT PK_Futbolista PRIMARY KEY (idFutbolista ASC),
-	CONSTRAINT FK_Futbolista_Equipo FOREIGN KEY (idEquipo) REFERENCES Equipo (idEquipo) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	CONSTRAINT FK_Futbolista_Tipo FOREIGN KEY (idTipoFutbolista) REFERENCES Tipo_Futbolista (idTipoFutbolista) ON DELETE NO ACTION ON UPDATE NO ACTION
+	CONSTRAINT pk_Futbolista PRIMARY KEY (idFutbolista ASC),
+	CONSTRAINT fk_Futbolista_Equipo FOREIGN KEY (idEquipo) REFERENCES Equipo (idEquipo) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT fk_Futbolista_Tipo FOREIGN KEY (idTipoFutbolista) REFERENCES Tipo_Futbolista (idTipoFutbolista) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 -- ==========================================================
 -- Tabla: Usuario
 -- ==========================================================
 CREATE TABLE Usuario (
-	idUsuario INT UNSIGNED AUTO_INCREMENT,
+	idUsuario Smallint AUTO_INCREMENT,
 	nombre VARCHAR(45) NOT NULL,
 	apellido VARCHAR(45) NOT NULL,
 	email VARCHAR(100) NOT NULL,
 	fechaNac DATE,
-	contrasena CHAR(64) NOT NULL,
+	contraseña CHAR(64) NOT NULL,
 	es_admin TINYINT DEFAULT 0,
-	CONSTRAINT PK_Usuario PRIMARY KEY (idUsuario ASC),
-	CONSTRAINT UQ_Usuario_Email UNIQUE (email ASC)
+	CONSTRAINT pk_Usuario PRIMARY KEY (idUsuario ASC),
+	CONSTRAINT uq_Usuario_Email UNIQUE (email ASC)
 );
 
 -- ==========================================================
@@ -68,39 +68,39 @@ CREATE TABLE Puntuacion (
 	idFutbolista SMALLINT UNSIGNED NOT NULL,
 	puntuacion FLOAT,
 	cantFech SMALLINT,
-	CONSTRAINT PK_Puntuacion PRIMARY KEY (idPuntuacion ASC),
-	CONSTRAINT FK_Puntuacion_Futbolista FOREIGN KEY (idFutbolista) REFERENCES Futbolista (idFutbolista) ON DELETE NO ACTION ON UPDATE NO ACTION
+	CONSTRAINT pk_Puntuacion PRIMARY KEY (idPuntuacion ASC),
+	CONSTRAINT fk_Puntuacion_Futbolista FOREIGN KEY (idFutbolista) REFERENCES Futbolista (idFutbolista) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 -- ==========================================================
 -- Tabla: Plantilla
 -- ==========================================================
 CREATE TABLE Plantilla (
-	idPlantilla INT UNSIGNED AUTO_INCREMENT,
+	idPlantilla TINYINT UNSIGNED AUTO_INCREMENT,
 	nombreP VARCHAR(45) NOT NULL,
 	cantMaxMonto DECIMAL(11,2),
 	cantMaxFutbolista TINYINT,
-	idUsuario INT UNSIGNED,
+	idUsuario SMALLINT,
 	idPuntuacion INT UNSIGNED,
-	CONSTRAINT PK_Plantilla PRIMARY KEY (idPlantilla ASC),
-	CONSTRAINT FK_Plantilla_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario (idUsuario) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	CONSTRAINT FK_Plantilla_Puntuacion FOREIGN KEY (idPuntuacion) REFERENCES Puntuacion (idPuntuacion) ON DELETE NO ACTION ON UPDATE NO ACTION
+	CONSTRAINT pk_Plantilla PRIMARY KEY (idPlantilla ASC),
+	CONSTRAINT fk_Plantilla_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario (idUsuario) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT fk_Plantilla_Puntuacion FOREIGN KEY (idPuntuacion) REFERENCES Puntuacion (idPuntuacion) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 -- ==========================================================
 -- Tabla: Futbolista_Plantilla
 -- ==========================================================
 CREATE TABLE Futbolista_Plantilla (
-	idFutbolistaPlantilla INT UNSIGNED AUTO_INCREMENT,
-	idFutbolista SMALLINT UNSIGNED NOT NULL,
-	idPlantilla INT UNSIGNED NOT NULL,
+	idFutbolistaPlantilla TINYINT UNSIGNED AUTO_INCREMENT,
 	futbolistaTitular TINYINT DEFAULT 0,
 	futbolistaSuplente TINYINT DEFAULT 0,
 	validacionP TINYINT DEFAULT 0,
 	validacionR TINYINT DEFAULT 0,
-	CONSTRAINT PK_Futbolista_Plantilla PRIMARY KEY (idFutbolistaPlantilla ASC),
-	CONSTRAINT FK_FP_Futbolista FOREIGN KEY (idFutbolista) REFERENCES Futbolista (idFutbolista) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	CONSTRAINT FK_FP_Plantilla FOREIGN KEY (idPlantilla) REFERENCES Plantilla (idPlantilla) ON DELETE NO ACTION ON UPDATE NO ACTION
+	idPlantilla TINYINT UNSIGNED NOT NULL,
+	idFutbolista SMALLINT UNSIGNED NOT NULL,
+	CONSTRAINT pk_Futbolista_Plantilla PRIMARY KEY (idFutbolistaPlantilla ASC),
+	CONSTRAINT fk_FP_Futbolista FOREIGN KEY (idFutbolista) REFERENCES Futbolista (idFutbolista) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT fk_FP_Plantilla FOREIGN KEY (idPlantilla) REFERENCES Plantilla (idPlantilla) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 SELECT 'Tablas creadas correctamente' AS 'Estado Final';

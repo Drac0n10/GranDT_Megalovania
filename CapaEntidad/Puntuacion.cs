@@ -8,9 +8,12 @@ namespace CapaEntidad
 {
     public class Puntuacion
     {
-        public short IdFutbolista { get; set; }
-        public byte Fecha { get; set; }
-        public float Puntos { get; set; }
+        
+        public int IdPuntuacion { get; set; }
+        public float Puntuacion { get; set; }
+        public short CantFecha { get; set; }
+        public short FK_IdFutbolista { get; set; }
+        
 
     }
 }

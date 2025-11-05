@@ -14,8 +14,8 @@ namespace CapaEntidad
         public string? Apodo { get; set; }
         public DateTime FechaNac { get; set; }
         public decimal Cotizacion { get; set; }
-        public required Equipo Equipo { get; set; }
-        public required TipoFutbolista Tipo { get; set; }
+        public required byte Equipo { get; set; }
+        public required byte TipoFutbolista { get; set; }
         public IEnumerable<Puntuacion> Puntuaciones { get; set; } = [];
 
     }

@@ -9,7 +9,7 @@ namespace CapaEntidad
     public class TipoFutbolista
     {
         public byte IdTipoFutbolista { get; set; }
-        public required string Nombre { get; set; }
+        public required string Tipo_Futbolista { get; set; }
 
     }
 }

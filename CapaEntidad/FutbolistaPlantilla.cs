@@ -9,12 +9,11 @@ namespace CapaEntidad
     public class FutbolistaPlantilla
     {
         public byte IdFutbolistaPlantilla { get; set; }
-        public byte futbolista_titulares { get; set; }
-        public byte futbolista_suplentes { get; set; }
-        public byte fk_idPlantilla { get; set; }
-        public short fk_idFutbolista { get; set; }
-        public int validacionP { get; set; }
-        public int validacionR { get; set; }
-
+        public byte Futbolista_titulares { get; set; }
+        public byte Futbolista_suplentes { get; set; } 
+        public int ValidacionP { get; set; }
+        public int ValidacionR { get; set; }
+        public byte FK_idPlantilla { get; set; }
+        public short FK_idFutbolista { get; set; }
     }
 }
