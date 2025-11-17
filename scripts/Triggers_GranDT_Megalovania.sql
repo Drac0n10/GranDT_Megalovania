@@ -32,7 +32,7 @@ FOR EACH ROW
 BEGIN
     IF NEW.cotizacion < 0 OR NEW.cotizacion > 99999999.99 THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = '❌ Cotización fuera de rango permitido (0 - 99.999.999,99).';
+        SET MESSAGE_TEXT = 'Cotización fuera de rango permitido (0 - 99.999.999,99).';
     END IF;
 END$$
   
